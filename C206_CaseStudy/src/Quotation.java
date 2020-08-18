@@ -44,4 +44,5 @@ public class Quotation {
 	public double getAmount() {
 		return amount;
 	}
+
 }
