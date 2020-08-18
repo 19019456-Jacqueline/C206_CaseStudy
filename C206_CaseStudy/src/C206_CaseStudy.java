@@ -19,7 +19,7 @@ public class C206_CaseStudy {
 				
 				if (option == 1) {
 					Package p = inputPackage();
-					C206_CaseStudy.addPackage(packageList, p);
+					addPackage(packageList, p);
 					
 				} else if (option == 2) {
 					//C206_CaseStudy.viewAllPackages(packageList);
@@ -92,7 +92,6 @@ public class C206_CaseStudy {
 	}
 
 	public static void addPackage(ArrayList<Package> packageList, Package p) {
-		inputPackage();
 		packageList.add(p);
 		System.out.println("Package added!");
 	}
