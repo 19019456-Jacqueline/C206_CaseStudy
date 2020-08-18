@@ -1,4 +1,4 @@
-import java.util.Date;
+
 
 public class Package {
 	private String description;
@@ -34,6 +34,10 @@ public class Package {
 		return endDate;
 	}
 	
+	public boolean isAvailable() {
+		return isAvailable;
+	}
+
 	public static String showAvailability(boolean isAvailable) {
 		String avail;
 
