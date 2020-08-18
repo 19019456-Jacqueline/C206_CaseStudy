@@ -18,10 +18,11 @@ public class C206_CaseStudy {
 				inputType();
 				
 				if (option == 1) {
-					C206_CaseStudy.inputPackage();
+					Package p = inputPackage();
+					C206_CaseStudy.addPackage(packageList, p);
 					
 				} else if (option == 2) {
-					C206_CaseStudy.viewAllPackages(packageList);
+					//C206_CaseStudy.viewAllPackages(packageList);
 				} 
 			
 			} else if (option == 2) {
@@ -77,6 +78,7 @@ public class C206_CaseStudy {
 	}
 
 	// Manage package (Done by Jacqueline)
+	//Add packages
 	public static Package inputPackage() {
 		String pcode = Helper.readString("Enter package code> ");
 		String description = Helper.readString("Enter package description> ");
@@ -95,8 +97,8 @@ public class C206_CaseStudy {
 		System.out.println("Package added!");
 	}
 
-	
-	public static String retrieveAllPackages(ArrayList<Package> packageList) {
+	//View packages
+	/*public static String retrieveAllPackages(ArrayList<Package> packageList) {
 		String output = "";
 		// write your code here
 		for (int i = 0; i < packageList.size(); i++) {
@@ -115,8 +117,9 @@ public class C206_CaseStudy {
 				"PACKAGE CODE", "DESCRIPTION", "PACKAGE AMOUNT", "PACKAGE START DATE", "PACKAGE END DATE", "AVAILABILITY");
 		output += retrieveAllPackages(packageList);
 		System.out.println(output);
-	}
+	}*/
 
+	
 	
 	
 	
