@@ -11,18 +11,18 @@ public class C206_CaseStudy {
 
 		int option = 0;
 		while (option != QUIT) {
-			C206_CaseStudy.menu();
+			menu();
 			option = Helper.readInt("Choose option> ");
 			if (option == 1) {
 
 				inputType();
-				
-				if (option == 1) {
+				int packageOption = Helper.readInt("Enter option> ");
+				if (packageOption == 1) {
 					Package p = inputPackage();
 					addPackage(packageList, p);
 					
-				} else if (option == 2) {
-					//C206_CaseStudy.viewAllPackages(packageList);
+				} else if (packageOption == 2) {
+					viewAllPackages(packageList);
 				} 
 			
 			} else if (option == 2) {
@@ -58,15 +58,17 @@ public class C206_CaseStudy {
 		System.out.println("3. Manage Quotation");
 		System.out.println("4. Manage Request for Quotation");
 		System.out.println("5. Manage Appointment");
-
 	}
 
 	
 	private static void inputType() {
 		System.out.println("INPUT TYPES");
-		System.out.println("1. Add items");
-		System.out.println("2. View items");
-		System.out.println("3. Delete items");
+		System.out.println("1. Add package");
+		System.out.println("2. View all packages");
+		System.out.println("3. Delete package");
+		System.out.println("4. Search for package");
+		System.out.println("5. Update package");
+		System.out.println("6. Delete package based on start date");
 	}
 	
 	
@@ -97,11 +99,11 @@ public class C206_CaseStudy {
 	}
 
 	//View packages
-	/*public static String retrieveAllPackages(ArrayList<Package> packageList) {
+	public static String retrieveAllPackages(ArrayList<Package> packageList) {
 		String output = "";
 		// write your code here
 		for (int i = 0; i < packageList.size(); i++) {
-			output += String.format("%-20s %-10s %-10s %-10s %-10s\n", packageList.get(i).getpCode(), 
+			output += String.format("%-10s %-10s %-10s %-10s %-10s\n", packageList.get(i).getpCode(), 
 					packageList.get(i).getDescription(), packageList.get(i).getStartDate(),
 					packageList.get(i).getEndDate(), packageList.get(i).isAvailable() == true);
 			
@@ -112,13 +114,15 @@ public class C206_CaseStudy {
 	
 	public static void viewAllPackages(ArrayList<Package> packageList) {
 		C206_CaseStudy.setHeader("VIEW ALL PACKAGES");
-		String output = String.format("%-10s %-10s %-10s %-10s %-10s %-10s", 
-				"PACKAGE CODE", "DESCRIPTION", "PACKAGE AMOUNT", "PACKAGE START DATE", "PACKAGE END DATE", "AVAILABILITY");
+		String output = String.format("%-10s %-15s %-10s %-10s %-10s %-10s\n", 
+				"CODE", "DESCRIPTION", "AMOUNT", "START DATE", "END DATE", "AVAILABILITY");
 		output += retrieveAllPackages(packageList);
 		System.out.println(output);
-	}*/
+	}
 
-	
+	public static void deletePackage() {
+		
+	}
 	
 	
 	
