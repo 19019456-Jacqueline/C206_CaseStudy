@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class C206_CaseStudy {
 
 	private static final int QUIT = 6;
-
+	private static final int MANAGE_PACKAGE = 1;
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -13,7 +13,7 @@ public class C206_CaseStudy {
 		while (option != QUIT) {
 			C206_CaseStudy.menu();
 			option = Helper.readInt("Choose option> ");
-			if (option == 1) {
+			if (option == MANAGE_PACKAGE) {
 				
 			} else if (option == 2) {
 				
@@ -60,10 +60,12 @@ public class C206_CaseStudy {
 		return p;
 	}
 	
-	/*public static void addPackage() {
+	public static void addPackage(ArrayList<Package> packageList, Package p) {
 		packageList.add(p);
-		
-	}*/
+		System.out.println("Package added!");
+	}
+	
+	
 	
 
 }
