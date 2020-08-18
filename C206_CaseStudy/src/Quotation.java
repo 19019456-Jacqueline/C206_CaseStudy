@@ -1,15 +1,13 @@
-import java.time.LocalDateTime;
-
 public class Quotation {
 	private int reqID;
 	private int quotationID;
 	private String category;
 	private String description;
 	private String name;
-	private LocalDateTime date;
+	private String date;
 	private double amount;
 
-	public Quotation(int reqID, int quotationID, String category, String description, String name, LocalDateTime date, double amount) {
+	public Quotation(int reqID, int quotationID, String category, String description, String name, String date, double amount) {
 		this.reqID = reqID;
 		this.quotationID = quotationID;
 		this.category = category;
@@ -55,11 +53,11 @@ public class Quotation {
 		this.name = name;
 	}
 
-	public LocalDateTime getDate() {
+	public String getDate() {
 		return date;
 	}
 
-	public void setDate(LocalDateTime date) {
+	public void setDate(String date) {
 		this.date = date;
 	}
 
