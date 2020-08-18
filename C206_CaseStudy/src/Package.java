@@ -8,7 +8,8 @@ public class Package {
 	private String endDate;
 	private boolean isAvailable;
 	
-	public Package(String description, String packageCode, double packageAmount, String startDate, String endDate, boolean isAvailable) {
+	public Package(String description, String packageCode, double packageAmount, 
+			String startDate, String endDate, boolean isAvailable) {
 		this.description = description;
 		this.packageCode = packageCode;
 		this.packageAmount = packageAmount;
