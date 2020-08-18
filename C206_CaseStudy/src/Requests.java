@@ -54,5 +54,4 @@ public class Requests {
 		return amount;
 	}
 
-	
 }

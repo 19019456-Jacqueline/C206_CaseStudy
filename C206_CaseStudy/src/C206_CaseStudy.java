@@ -9,6 +9,6 @@ public class C206_CaseStudy {
 	}
 	
 	public static void menu() {
-		
+		System.out.println();
 	}
 }
