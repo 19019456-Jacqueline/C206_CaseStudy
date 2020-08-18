@@ -100,7 +100,10 @@ public class C206_CaseStudy {
 		String output = "";
 		// write your code here
 		for (int i = 0; i < packageList.size(); i++) {
-			output += String.format("%-20s\n", packageList.get(i).toString());
+			output += String.format("%-20s %-10s %-10s %-10s %-10s\n", packageList.get(i).getpCode(), 
+					packageList.get(i).getDescription(), packageList.get(i).getStartDate(),
+					packageList.get(i).getEndDate(), packageList.get(i).isAvailable() == true);
+			
 		}
 		return output;
 	}
