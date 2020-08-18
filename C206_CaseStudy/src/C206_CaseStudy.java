@@ -31,14 +31,21 @@ public class C206_CaseStudy {
 	}
 	
 	public static void menu() {
-		System.out.println("WELCOME TO RENOVATION ACE");
-		System.out.println("1. Manage Customer");
-		System.out.println("2. Manage Package");
+		C206_CaseStudy.setHeader("WELCOME TO RENOVATION ACE");
+		System.out.println("1. Manage Package");
+		System.out.println("2. Manage Customer");
 		System.out.println("3. Manage Quotation");
 		System.out.println("4. Manage Request for Quotation");
 		System.out.println("5. Manage Appointment");
 		
 	}
+	
+	public static void setHeader(String header) {
+		Helper.line(80, "-");
+		System.out.println(header);
+		Helper.line(80, "-");
+	}
+	
 	
 	//Manage package (Done by Jacqueline)
 	public static Package inputPackage() {
@@ -52,5 +59,8 @@ public class C206_CaseStudy {
 		Package p  = new Package(pcode, description,packageAmount, startDate, endDate, availablePackage);
 		return p;
 	}
+	
+	
+	
 
 }
