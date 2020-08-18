@@ -52,6 +52,8 @@ public class C206_CaseStudy {
 					C206_CaseStudy.addUserAccounts(userAccList, ua);
 				} else if (userOptions == 2) {
 					C206_CaseStudy.viewUserAccounts(userAccList);
+				} else if (userOptions == 3) {
+					C206_CaseStudy.deleteUserAccounts(userAccList);
 				}
 
 			} else if (option == 3) {
@@ -219,6 +221,18 @@ public class C206_CaseStudy {
 		String output = String.format("%-10s %-20s %-10s %-10s %-20s\n", "NAME", "ROLE", "EMAIL", "PASSWORD", "STATUS");
 		output += retrieveAllUsers(userAccList);
 		System.out.println(output);
+	}
+	//======= Option 3 Delete User Accounts =======
+	public static void deleteUserAccounts(ArrayList<userAccounts> userAccList) {
+
+		String delete = Helper.readString("Please enter username to delete> ");
+
+		for (int i = 0; i < userAccList.size(); i++) {
+			if (userAccList.get(i).getName() == delete) {
+				userAccList.remove(i);
+				System.out.println("User Account deleted");
+			}
+		}
 	}
 
 	// Manage quotation (Done by Eu Kuang)
