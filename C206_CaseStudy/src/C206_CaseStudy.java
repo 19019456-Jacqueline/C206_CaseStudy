@@ -1,9 +1,57 @@
+import java.util.ArrayList;
 
 public class C206_CaseStudy {
+	private static final int QUIT = 6;
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
+		ArrayList<Package> packageList = new ArrayList<Package>();
+		
+		
+		
+		
+		int option = 0;
+		while (option != QUIT) {
+			C206_CaseStudy.menu();
+			option = Helper.readInt("Choose option> ");
+			if (option == 1) {
+				
+			} else if (option == 2) {
+				
+			} else if (option == 3) {
+				
+			}
+			
+			
+		}
+		
+		
+		
+		
+		
+	}
+	
+	public static void menu() {
+		System.out.println("WELCOME TO RENOVATION ACE");
+		System.out.println("1. Manage Customer");
+		System.out.println("2. Manage Package");
+		System.out.println("3. Manage Quotation");
+		System.out.println("4. Manage Request for Quotation");
+		System.out.println("5. Manage Appointment");
+		
+	}
+	
+	//Manage package (Done by Jacqueline)
+	public static Package inputPackage() {
+		String pcode = Helper.readString("Enter package code> ");
+		String description = Helper.readString("Enter package description> ");
+		String startDate = Helper.readString("Enter package start date");
+		String endDate = Helper.readString("Enter package end date> ");
+		double packageAmount = Helper.readDouble("Enter package amount> ");
+		boolean availablePackage = Helper.readBoolean("Is the package available? > ");
+		
+		Package p  = new Package(pcode, description,packageAmount, startDate, endDate, availablePackage);
+		return p;
 	}
 
 }
