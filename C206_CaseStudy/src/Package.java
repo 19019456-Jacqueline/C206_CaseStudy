@@ -2,16 +2,16 @@ import java.util.Date;
 
 public class Package {
 	private String description;
-	private String pCode;
-	private int pAmount;
+	private String packageCode;
+	private double packageAmount;
 	private String startDate;
 	private String endDate;
 	private boolean isAvailable;
 	
-	public Package(String description, String pCode, int pAmount, String startDate, String endDate, boolean isAvailable) {
+	public Package(String description, String packageCode, double packageAmount, String startDate, String endDate, boolean isAvailable) {
 		this.description = description;
-		this.pCode = pCode;
-		this.pAmount = pAmount;
+		this.packageCode = packageCode;
+		this.packageAmount = packageAmount;
 		this.startDate = startDate;
 		this.endDate = endDate;
 		this.isAvailable = true;
@@ -21,10 +21,10 @@ public class Package {
 		return description;
 	}
 	public String getpCode() {
-		return pCode;
+		return packageCode;
 	}
-	public int getpAmount() {
-		return pAmount;
+	public double getpackageAmount() {
+		return packageAmount;
 	}
 	public String getStartDate() {
 		return startDate;
