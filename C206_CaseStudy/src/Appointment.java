@@ -35,6 +35,6 @@ public class Appointment {
 
 	public void setAppointmentDate(LocalDateTime appointmentDate) {
 		this.appointmentDate = appointmentDate;
-		System.out.println();
+		
 	}
 }
