@@ -8,10 +8,7 @@ public class C206_CaseStudy {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		ArrayList<Package> packageList = new ArrayList<Package>();
-		
-		
-		
-		
+	
 		int option = 0;
 		while (option != QUIT) {
 			C206_CaseStudy.menu();
