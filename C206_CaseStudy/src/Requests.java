@@ -46,5 +46,13 @@ public class Requests {
 		this.amount = amount;
 	}
 
+	public int getQuotationID() {
+		return quotationID;
+	}
+
+	public double getAmount() {
+		return amount;
+	}
+
 	
 }

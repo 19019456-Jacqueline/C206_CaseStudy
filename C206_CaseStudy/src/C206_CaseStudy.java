@@ -8,5 +8,7 @@ public class C206_CaseStudy {
 
 	}
 	
-	
+	public static void menu() {
+		
+	}
 }
