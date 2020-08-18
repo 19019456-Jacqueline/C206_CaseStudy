@@ -17,7 +17,7 @@ public class Quotation {
 		this.amount = amount;
 	}
 
-	public int getRequestID() {
+	public int getReqID() {
 		return reqID;
 	}
 
@@ -25,24 +25,50 @@ public class Quotation {
 		return quotationID;
 	}
 
+	public void setQuotationID(int quotationID) {
+		this.quotationID = quotationID;
+	}
+
 	public String getCategory() {
 		return category;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
 	}
 
 	public String getDescription() {
 		return description;
 	}
 
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
 	public String getName() {
 		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public String getDate() {
 		return date;
 	}
 
+	public void setDate(String date) {
+		this.date = date;
+	}
+
 	public double getAmount() {
 		return amount;
 	}
+
+	public void setAmount(double amount) {
+		this.amount = amount;
+	}
+
+	
 
 }
