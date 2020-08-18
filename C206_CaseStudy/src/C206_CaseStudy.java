@@ -55,7 +55,34 @@ public class C206_CaseStudy {
 				}
 
 			} else if (option == 3) {
-				
+				C206_CaseStudy.setHeader("MANAGE QUOTATION");
+				System.out.println("1. View All Quotation");
+				System.out.println("2. Add Quotation");
+				System.out.println("3. Delete Quotation");
+
+				int quotationOption = Helper.readInt("Enter an option > ");
+
+				if (quotationOption == 1) {
+					C206_CaseStudy.viewAllQuotation(quotationList);
+				}
+
+				else if (quotationOption == 2) {
+					int reqID = Helper.readInt("Request ID: ");
+					int quotationID = Helper.readInt("Quotation ID: ");
+					String category = Helper.readString("Category: ");
+					String description = Helper.readString("Description: ");
+					String name = Helper.readString("Name of Designer: ");
+					String date = Helper.readString("Start Date: ");
+					double amount = Helper.readDouble("Quotation Amount: ");
+
+					C206_CaseStudy.addQuotation(quotationList, inputQuotation(reqID, quotationID, category, description, name, date, amount));
+				}
+
+				else if (quotationOption == 3) {
+					int delete = Helper.readInt("Enter Quotation ID To Delete: ");
+					C206_CaseStudy.deleteQuotation(quotationList, delete);
+				}
+
 			} else if (option == 4) {
 
 			} else if (option == 5) {
@@ -244,7 +271,7 @@ public class C206_CaseStudy {
 
 	public static void deleteQuotation(ArrayList<Quotation> quotationList) {
 
-		int delete = Helper.readInt("Please enter a Quotation ID to delete: ");
+		int delete = Helper.readInt("Please enter Quotation ID to delete: ");
 
 		for (int i = 0; i < quotationList.size(); i++) {
 			if (quotationList.get(i).getQuotationID() == delete) {
