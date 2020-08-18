@@ -10,21 +10,31 @@ public class C206_CaseStudy {
 		ArrayList<Quotation> quotationList = new ArrayList<Quotation>();
 		ArrayList<userAccounts> userAccList = new ArrayList<userAccounts>();
 
-		
 		int option = 0;
 		while (option != QUIT) {
-			C206_CaseStudy.menu();
+			menu();
 			option = Helper.readInt("Choose option> ");
 			if (option == 1) {
 
 				inputType();
 
 				if (option == 1) {
-					Package p = inputPackage();
-					C206_CaseStudy.addPackage(packageList, p);
 
-				} else if (option == 2) {
-					// C206_CaseStudy.viewAllPackages(packageList);
+					int packageOption = Helper.readInt("Enter option> ");
+					if (packageOption == 1) {
+
+						Package p = inputPackage();
+
+						C206_CaseStudy.addPackage(packageList, p);
+
+					} else if (option == 2) {
+						// C206_CaseStudy.viewAllPackages(packageList);
+					}
+
+					addPackage(packageList, p);
+
+				} else if (packageOption == 2) {
+					viewAllPackages(packageList);
 				}
 
 			} else if (option == 2) {
@@ -45,15 +55,7 @@ public class C206_CaseStudy {
 				}
 
 			} else if (option == 3) {
-				C206_CaseStudy.setHeader("MANAGE QUOTATION");
-				System.out.println("1. Add Quotation");
-				System.out.println("2. View Quotation");
-				int testOption = Helper.readInt("Enter> ");
-				if (testOption == 1) {
-					inputQuotation();
-				} else if (testOption == 2) {
-					viewAllQuotation(quotationList);
-				}
+				
 			} else if (option == 4) {
 
 			} else if (option == 5) {
@@ -71,14 +73,16 @@ public class C206_CaseStudy {
 		System.out.println("3. Manage Quotation");
 		System.out.println("4. Manage Request for Quotation");
 		System.out.println("5. Manage Appointment");
-
 	}
 
 	private static void inputType() {
 		System.out.println("INPUT TYPES");
-		System.out.println("1. Add items");
-		System.out.println("2. View items");
-		System.out.println("3. Delete items");
+		System.out.println("1. Add package");
+		System.out.println("2. View all packages");
+		System.out.println("3. Delete package");
+		System.out.println("4. Search for package");
+		System.out.println("5. Update package");
+		System.out.println("6. Delete package based on start date");
 	}
 
 	public static void setHeader(String header) {
@@ -102,9 +106,29 @@ public class C206_CaseStudy {
 	}
 
 	public static void addPackage(ArrayList<Package> packageList, Package p) {
-		inputPackage();
 		packageList.add(p);
 		System.out.println("Package added!");
+	}
+
+	// View packages
+	public static String retrieveAllPackages(ArrayList<Package> packageList) {
+		String output = "";
+		// write your code here
+		for (int i = 0; i < packageList.size(); i++) {
+			output += String.format("%-10s %-10s %-10s %-10s %-10s\n", packageList.get(i).getpCode(),
+					packageList.get(i).getDescription(), packageList.get(i).getStartDate(),
+					packageList.get(i).getEndDate(), packageList.get(i).isAvailable() == true);
+
+		}
+		return output;
+	}
+
+	public static void viewAllPackages(ArrayList<Package> packageList) {
+		C206_CaseStudy.setHeader("VIEW ALL PACKAGES");
+		String output = String.format("%-10s %-15s %-10s %-10s %-10s %-10s\n", "CODE", "DESCRIPTION", "AMOUNT",
+				"START DATE", "END DATE", "AVAILABILITY");
+		output += retrieveAllPackages(packageList);
+		System.out.println(output);
 	}
 
 	// View packages
@@ -127,6 +151,10 @@ public class C206_CaseStudy {
 	 * "AVAILABILITY"); output += retrieveAllPackages(packageList);
 	 * System.out.println(output); }
 	 */
+
+	public static void deletePackage() {
+
+	}
 
 	// Manage users (Skye)
 	// ========== Option 1 Add User Accounts =============
@@ -173,13 +201,12 @@ public class C206_CaseStudy {
 
 		for (int i = 0; i < quotationList.size(); i++) {
 			// add while loop done by Jun Lim
-			//while (quotationList.get(i).getQuotationID() != 0) {
-				output += String.format("%-5d %-10d %-30d %-10s %-10s %-20s %-20s %-20.2f \n", quotationList.get(i),
-						quotationList.get(i).getReqID(), quotationList.get(i).getQuotationID(),
-						quotationList.get(i).getCategory(), quotationList.get(i).getDescription(),
-						quotationList.get(i).getName(), quotationList.get(i).getDate(),
-						quotationList.get(i).getAmount());
-			//}
+			// while (quotationList.get(i).getQuotationID() != 0) {
+			output += String.format("%-5d %-10d %-30d %-10s %-10s %-20s %-20s %-20.2f \n", quotationList.get(i),
+					quotationList.get(i).getReqID(), quotationList.get(i).getQuotationID(),
+					quotationList.get(i).getCategory(), quotationList.get(i).getDescription(),
+					quotationList.get(i).getName(), quotationList.get(i).getDate(), quotationList.get(i).getAmount());
+			// }
 		}
 
 		return output;
@@ -227,31 +254,31 @@ public class C206_CaseStudy {
 		}
 	}
 
-	//Done by Jun Lim
+	// Done by Jun Lim
 	public void editRequest(ArrayList<Quotation> quotationList) {
 		C206_CaseStudy.viewAllQuotation(quotationList);
 		int index = Helper.readInt("Which request index do you wish to edit? > ");
 		int editElement = Helper.readInt("Which element do you wish to edit? > ");
 		System.out.println("1. Quotation ID\n 2. Category\n 3. Description\n 4. Name\n 5. Date\n 6. Amount");
-		if (editElement == 1 ) {
+		if (editElement == 1) {
 			int qID = Helper.readInt("New QuotationID: ");
-			quotationList.get(index-1).setQuotationID(qID);
+			quotationList.get(index - 1).setQuotationID(qID);
 		} else if (editElement == 2) {
 			String cat = Helper.readString("New Category: ");
-			quotationList.get(index-1).setCategory(cat);
+			quotationList.get(index - 1).setCategory(cat);
 		} else if (editElement == 3) {
 			String desc = Helper.readString("New Description: ");
-			quotationList.get(index-1).setDescription(desc);
+			quotationList.get(index - 1).setDescription(desc);
 		} else if (editElement == 4) {
 			String name = Helper.readString("New Name: ");
-			quotationList.get(index-1).setName(name);
+			quotationList.get(index - 1).setName(name);
 		} else if (editElement == 5) {
 			String date = Helper.readString("New Date: ");
-			quotationList.get(index-1).setDate(date);
+			quotationList.get(index - 1).setDate(date);
 		} else if (editElement == 6) {
 			double amt = Helper.readDouble("New Amount: ");
-			quotationList.get(index-1).setAmount(amt);
+			quotationList.get(index - 1).setAmount(amt);
 		}
-		
+
 	}
 }
