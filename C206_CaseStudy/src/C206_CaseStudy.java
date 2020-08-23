@@ -312,7 +312,7 @@ public class C206_CaseStudy {
 	}
 	
 	//Update quotation (Done by Eu Kuang)
-	public static void updatdeQuotation(ArrayList<Quotation> quotationList, Quotation quote) {
+	public static void updateQuotation(ArrayList<Quotation> quotationList, Quotation quote) {
 
 		int update = Helper.readInt("Please enter Quotation ID to update: ");
 
