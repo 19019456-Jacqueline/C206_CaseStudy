@@ -12,6 +12,7 @@ public class C206_CaseStudyTest {
 	private Quotation q1;
 
 	private ArrayList<Package> packageList;
+	private ArrayList<Quotation> quotationList;
 
 
 	@Before
@@ -28,6 +29,7 @@ public class C206_CaseStudyTest {
 		
 		//Prepare some test data for manage quotation (Done by Eu Kuang)
 		q1 = new Quotation(1, 1, "Kitchen", "Doors", "Elkie Chong", "01-09-2020", 500.00);
+		quotationList = new ArrayList<Quotation>();
 
 
 	}
@@ -66,8 +68,6 @@ public class C206_CaseStudyTest {
 	}
 
 	//Manage quotation (Done by Eu Kuang)
-	ArrayList<Quotation> quotationList = new ArrayList<Quotation>();
-
 	@Test
 	//Add quotation (Done by Eu Kuang)
 	public void addQuotationTest() {
