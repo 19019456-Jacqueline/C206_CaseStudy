@@ -67,6 +67,8 @@ public class C206_CaseStudy {
 				System.out.println("1. View All Quotation");
 				System.out.println("2. Add Quotation");
 				System.out.println("3. Delete Quotation");
+				System.out.println("4. Search Quotation");
+				System.out.println("5. Update Quotation");
 
 				int quotationOption = Helper.readInt("Enter an option > ");
 
@@ -77,6 +79,12 @@ public class C206_CaseStudy {
 					C206_CaseStudy.addQuotation(quotationList, q);
 				} else if (quotationOption == 3) {
 					C206_CaseStudy.deleteQuotation(quotationList);
+				} else if (quotationOption == 4) {
+					C206_CaseStudy.searchQuotation(quotationList);
+				} else if (quotationOption == 5) {
+					C206_CaseStudy.updateQuotation(quotationList);
+				} else {
+					System.out.println("Invalid Option!");
 				}
 
 			} else if (option == 4) {
@@ -312,7 +320,7 @@ public class C206_CaseStudy {
 	}
 	
 	//Update quotation (Done by Eu Kuang)
-	public static void updateQuotation(ArrayList<Quotation> quotationList, Quotation quote) {
+	public static void updateQuotation(ArrayList<Quotation> quotationList) {
 
 		int update = Helper.readInt("Please enter Quotation ID to update: ");
 
