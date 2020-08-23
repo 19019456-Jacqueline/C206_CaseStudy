@@ -1,3 +1,6 @@
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class C206_CaseStudy {
@@ -20,6 +23,7 @@ public class C206_CaseStudy {
 
 				if (option == 1) {
 
+					// MANAGE PACKAGE MENU (Done by Jacqueline)
 					int packageOption = Helper.readInt("Enter option> ");
 					if (packageOption == 1) {
 
@@ -39,7 +43,7 @@ public class C206_CaseStudy {
 
 			} else if (option == 2) {
 
-				// MANAGE CUSTOMERS
+				// MANAGE CUSTOMERS MENU (Done by Skye)
 				C206_CaseStudy.setHeader("MANAGE CUSTOMERS");
 				System.out.println("1. Add User Accounts");
 				System.out.println("2. View all users");
@@ -57,6 +61,8 @@ public class C206_CaseStudy {
 				}
 
 			} else if (option == 3) {
+				
+				// MANAGE QUOTATION MENU (Done by Eu Kuang)
 				C206_CaseStudy.setHeader("MANAGE QUOTATION");
 				System.out.println("1. View All Quotation");
 				System.out.println("2. Add Quotation");
@@ -66,23 +72,11 @@ public class C206_CaseStudy {
 
 				if (quotationOption == 1) {
 					C206_CaseStudy.viewAllQuotation(quotationList);
-				}
-
-				else if (quotationOption == 2) {
-					int reqID = Helper.readInt("Request ID: ");
-					int quotationID = Helper.readInt("Quotation ID: ");
-					String category = Helper.readString("Category: ");
-					String description = Helper.readString("Description: ");
-					String name = Helper.readString("Name of Designer: ");
-					String date = Helper.readString("Start Date: ");
-					double amount = Helper.readDouble("Quotation Amount: ");
-
-					C206_CaseStudy.addQuotation(quotationList, inputQuotation(reqID, quotationID, category, description, name, date, amount));
-				}
-
-				else if (quotationOption == 3) {
-					int delete = Helper.readInt("Enter Quotation ID To Delete: ");
-					C206_CaseStudy.deleteQuotation(quotationList, delete);
+				} else if (quotationOption == 2) {
+					Quotation q = inputQuotation();
+					C206_CaseStudy.addQuotation(quotationList, q);
+				} else if (quotationOption == 3) {
+					C206_CaseStudy.deleteQuotation(quotationList);
 				}
 
 			} else if (option == 4) {
@@ -252,7 +246,8 @@ public class C206_CaseStudy {
 
 		return output;
 	}
-
+	
+	//View quotation (Done by Eu Kuang) 
 	public static void viewAllQuotation(ArrayList<Quotation> quotationList) {
 
 		C206_CaseStudy.setHeader("Manage Quotation");
@@ -264,6 +259,7 @@ public class C206_CaseStudy {
 		System.out.println(output);
 	}
 
+	//Add quotation (Done by Eu Kuang)
 	public static Quotation inputQuotation() {
 
 		int reqID = Helper.readInt("Request ID: ");
@@ -271,18 +267,19 @@ public class C206_CaseStudy {
 		String category = Helper.readString("Category: ");
 		String description = Helper.readString("Description: ");
 		String name = Helper.readString("Name of Designer: ");
-		String date = Helper.readString("Start Date: ");
+		String date = Helper.readString("Start Date (dd-mm-yyy): ");
 		double amount = Helper.readDouble("Quotation Amount: ");
 
 		Quotation quote = new Quotation(reqID, quotationID, category, description, name, date, amount);
 		return quote;
 	}
 
-	public void addQuotation(ArrayList<Quotation> quotationList, Quotation quote) {
+	public static void addQuotation(ArrayList<Quotation> quotationList, Quotation quote) {
 		quotationList.add(quote);
 		System.out.println("Quotation added!");
 	}
 
+	//Delete quotation (Done by Eu Kuang)
 	public static void deleteQuotation(ArrayList<Quotation> quotationList) {
 
 		int delete = Helper.readInt("Please enter Quotation ID to delete: ");
@@ -291,9 +288,47 @@ public class C206_CaseStudy {
 			if (quotationList.get(i).getQuotationID() == delete) {
 				quotationList.remove(i);
 				System.out.println("Quotation deleted!");
+			} else {
+				System.out.println("Invalid Quotation ID!");
 			}
 		}
 	}
+	
+	//Search quotation (Done by Eu Kuang)
+	public static void searchQuotation(ArrayList<Quotation> quotationList) {
+
+		int search = Helper.readInt("Please enter Quotation ID to search: ");
+
+		for (int i = 0; i < quotationList.size(); i++) {
+			if (quotationList.get(i).getQuotationID() == search) {
+				System.out.println("Designer name: " + quotationList.get(i).getName());
+				System.out.println("Total cost range: " + quotationList.get(i).getAmount());
+				System.out.println("Start renovation date (MM-dd-yyy): " + quotationList.get(i).getDate());
+				System.out.println("Renovation type: " + quotationList.get(i).getCategory());
+			} else {
+				System.out.println("Invalid Quotation ID!");
+			}
+		}
+	}
+	
+	//Update quotation (Done by Eu Kuang)
+	public static void updatdeQuotation(ArrayList<Quotation> quotationList, Quotation quote) {
+
+		int update = Helper.readInt("Please enter Quotation ID to update: ");
+
+		for (int i = 0; i < quotationList.size(); i++) {
+			if (quotationList.get(i).getQuotationID() == update) {
+				String updateCategory = Helper.readString("Enter the new renovation category: ");
+				String updateDate = Helper.readString("Enter the new earliest start date (dd-mm-yyy): ");
+				quotationList.get(i).setCategory(updateCategory);
+				quotationList.get(i).setDate(updateDate);
+				System.out.println("Quotation updated!");
+			} else {
+				System.out.println("Invalid Quotation ID!");
+			}
+		}
+	}
+	
 
 	// Done by Jun Lim
 	public void editRequest(ArrayList<Quotation> quotationList) {
