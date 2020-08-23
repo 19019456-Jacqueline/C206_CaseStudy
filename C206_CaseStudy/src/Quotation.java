@@ -1,3 +1,5 @@
+//Quotation entity class (Done by Eu Kuang)
+
 public class Quotation {
 	private int reqID;
 	private int quotationID;
