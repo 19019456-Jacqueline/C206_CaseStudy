@@ -230,7 +230,7 @@ public class C206_CaseStudy {
 	}
 
 	// Manage quotation (Done by Eu Kuang)
-	public static String retreiveAllQuotation(ArrayList<Quotation> quotationList) {
+	public static String retrieveAllQuotation(ArrayList<Quotation> quotationList) {
 
 		String output = "";
 
@@ -255,7 +255,7 @@ public class C206_CaseStudy {
 		String output = String.format("%-5s %-10s %-30s %-10s %-10s %-20s %-20s %-20s \n", "INDEX", "REQUEST ID",
 				"QUOTATION ID", "CATEGORY", "DESCRIPTION", "NAME", "DATE", "AMOUNT");
 
-		output += retreiveAllQuotation(quotationList);
+		output += retrieveAllQuotation(quotationList);
 		System.out.println(output);
 	}
 
