@@ -114,6 +114,7 @@ public class C206_CaseStudyTest {
 	public void editRequestTest() {
 		addQuotationTest();
 		C206_CaseStudy.editRequest(quotationList);
-		
+		String testOut = String.format("%-10d %-10d %-10s %-10s %-10s %-10s %-10.2f \n", 1,1,"Test","Test","Dave","2-10-2021", 450.00);
+		assertEquals("Test request updated", testOut, quotationList.get(0));
 	}
 }

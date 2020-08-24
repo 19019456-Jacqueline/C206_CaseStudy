@@ -372,7 +372,6 @@ public class C206_CaseStudy {
 			double amt = Helper.readDouble("New Amount: ");
 			quotationList.get(index - 1).setAmount(amt);
 		}
-
 	}
 	
 	// Manage Appointment (Done by Vi Ron)
