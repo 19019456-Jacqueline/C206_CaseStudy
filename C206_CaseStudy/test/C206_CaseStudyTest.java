@@ -34,7 +34,7 @@ public class C206_CaseStudyTest {
 		q1 = new Quotation(1, 1, "Kitchen", "Doors", "Elkie Chong", "01-09-2020", 500.00);
 		quotationList = new ArrayList<Quotation>();
 		
-		//Prepare some test data for manage quotation (Done by Skye)
+		//Prepare some test data for manage customer (Done by Skye)
 		ua1 = new userAccounts("jack", "customer", "jack@gmail.com", "hiimjack", "verified");
         ua2 = new userAccounts("joe", "designer", "joe@gmail.com", "hiimjoe", "verified");
         userAccList = new ArrayList<userAccounts>();
