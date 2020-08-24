@@ -11,7 +11,7 @@ public class C206_CaseStudyTest {
 	private Package p2;
 	private Quotation q1;
 	private userAccounts ua1;
-    private userAccounts ua2;
+	private userAccounts ua2;
 
 	private ArrayList<Package> packageList;
 	private ArrayList<Quotation> quotationList;
@@ -29,15 +29,15 @@ public class C206_CaseStudyTest {
 
 
 		packageList=new ArrayList<Package>();
-		
+
 		//Prepare some test data for manage quotation (Done by Eu Kuang)
 		q1 = new Quotation(1, 1, "Kitchen", "Doors", "Elkie Chong", "01-09-2020", 500.00);
 		quotationList = new ArrayList<Quotation>();
-		
+
 		//Prepare some test data for manage customer (Done by Skye)
 		ua1 = new userAccounts("jack", "customer", "jack@gmail.com", "hiimjack", "verified");
-        ua2 = new userAccounts("joe", "designer", "joe@gmail.com", "hiimjoe", "verified");
-        userAccList = new ArrayList<userAccounts>();
+		ua2 = new userAccounts("joe", "designer", "joe@gmail.com", "hiimjoe", "verified");
+		userAccList = new ArrayList<userAccounts>();
 
 
 	}
@@ -106,17 +106,17 @@ public class C206_CaseStudyTest {
 		C206_CaseStudy.deleteQuotation(quotationList);
 		assertEquals("Checks if quotation is deleted properly,", 0, quotationList.size());
 	}
-	
+
 	//Update quotation (Done by Eu Kuang)	
 	public void updateQuotationTest() {
-	    assertNotNull("Test if there is valid Quotation arraylist to retrieve item", quotationList);
-	    C206_CaseStudy.addQuotation(quotationList, q1);
-	    quotationList.get(0).setCategory("Tiles");
-	    quotationList.get(0).setDate("02-09-2020");
-	    String allQuotation= C206_CaseStudy.retrieveAllQuotation(quotationList);
-	    String testOutput = String.format("%-10d %-10d %-10s %-10s %-10s %-10s %-10.2f \n", 1, 1, "Kitchen", "Tiles", "Elkie Chong", "02-09-2020", 500.00);
-	    assertEquals("Test that updateQuotation", testOutput, allQuotation);
-	  }
+		assertNotNull("Test if there is valid Quotation arraylist to retrieve item", quotationList);
+		C206_CaseStudy.addQuotation(quotationList, q1);
+		quotationList.get(0).setCategory("Tiles");
+		quotationList.get(0).setDate("02-09-2020");
+		String allQuotation= C206_CaseStudy.retrieveAllQuotation(quotationList);
+		String testOutput = String.format("%-10d %-10d %-10s %-10s %-10s %-10s %-10.2f \n", 1, 1, "Kitchen", "Tiles", "Elkie Chong", "02-09-2020", 500.00);
+		assertEquals("Test that updateQuotation", testOutput, allQuotation);
+	}
 
 	@Test
 	//editRequest (Jun Lim)
@@ -126,73 +126,82 @@ public class C206_CaseStudyTest {
 		String testOut = String.format("%-10d %-10d %-10s %-10s %-10s %-10s %-10.2f \n", 1,1,"Test","Test","Dave","2-10-2021", 450.00);
 		assertEquals("Test request updated", testOut, quotationList.get(0));
 	}
-	
+
 	// Manage Customer (Done by Skye)
-    @Test
-    public void addUserAccountsTest() {
-        // Item list is not null, so that can add a new item
-        assertNotNull("Test if there is valid user account arraylist to add to", userAccList);
+	@Test
+	public void addUserAccountsTest() {
+		// Item list is not null, so that can add a new item
+		assertNotNull("Test if there is valid user account arraylist to add to", userAccList);
 
- 
 
-        // Given an empty list, after adding 1 item, the size of the list is 1
-        C206_CaseStudy.addUserAccounts(userAccList, ua1);
-        assertEquals("Test if that user account arraylist size is 1?", 1, userAccList.size());
 
- 
+		// Given an empty list, after adding 1 item, the size of the list is 1
+		C206_CaseStudy.addUserAccounts(userAccList, ua1);
+		assertEquals("Test if that user account arraylist size is 1?", 1, userAccList.size());
 
-    }
-    @Test
-    public void viewUserAccountsTest() {
-        // Item list is not null, so that can add a new item
-        assertNotNull("Test if there is valid user account arraylist to add to", userAccList);
 
- 
 
-        // If there is an empty list, add 2 items and test if the size of the list is 2
-        C206_CaseStudy.addUserAccounts(userAccList, ua1);
-        C206_CaseStudy.addUserAccounts(userAccList, ua2);
-        assertEquals("Test that customer details are in the UserAccount arraylist", 2, userAccList.size());
+	}
+	@Test
+	public void viewUserAccountsTest() {
+		// Item list is not null, so that can add a new item
+		assertNotNull("Test if there is valid user account arraylist to add to", userAccList);
 
- 
 
-        // Test if the expected output string same as the list of UserAccounts retrieved
-        String allUsers = C206_CaseStudy.retrieveAllUsers(userAccList);
-        String testOutput = String.format("%-10s%-15s%-15s%s\n", "Skye", "Customer", "skye@gmail.com", "hiimskye","verified");
-        testOutput += String.format("%-10s%-15s%-15s%s\n", "Gerald", "Designer", "gerald@gmail.com", "hiimgerald","new");
 
- 
+		// If there is an empty list, add 2 items and test if the size of the list is 2
+		C206_CaseStudy.addUserAccounts(userAccList, ua1);
+		C206_CaseStudy.addUserAccounts(userAccList, ua2);
+		assertEquals("Test that customer details are in the UserAccount arraylist", 2, userAccList.size());
 
-        assertEquals("Test that able to see the displayed customer details in the desired format",
-                testOutput, allUsers);
-    }
-    @Test
-    public void deleteUserAccountsTest() {
-        // Item list is not null, so that can add a new item
-        assertNotNull("Test if there is valid user account arraylist to add to", userAccList);
-        
-        C206_CaseStudy.addUserAccounts(userAccList, ua1);
-        assertEquals("Test that the customer details are in the UserAccount arraylist", 1, userAccList.size());
-        // Check if the size of accountList decrements by 1 after deleting a user
-        C206_CaseStudy.deleteUserAccounts(userAccList,"jack");
-        assertEquals("Check if User has been deleted properly", 0, userAccList.size());
-    }
-    @Test
-    public void updateUserAccountsTest() {
-        // check that accountList is valid, so that can add a new item - boundary
-        assertNotNull("Test if there is valid UserAccount arraylist to retrieve item", userAccList);
-        // Given a valid list, after adding 1 item, the size of the list is 1 - normal
-        // The item just added is as same as the first item of the list
-        C206_CaseStudy.addUserAccounts(userAccList, ua1);
-        // Update user
-        C206_CaseStudy.updateUserAccounts(userAccList);
-        // test if the expected output string same as the list of UserAccounts retrieved
-        String updateOutput = String.format("%-10s%-15s", ua1.getName(), ua1.getPassword());
-        String expectedUpdateOutput = String.format("%-10s%-15s", "Joey", "Joey123");
 
- 
 
-        assertEquals("Test that updtOutput has the expectedUpdtOutput", updateOutput, expectedUpdateOutput);
+		// Test if the expected output string same as the list of UserAccounts retrieved
+		String allUsers = C206_CaseStudy.retrieveAllUsers(userAccList);
+		String testOutput = String.format("%-10s%-15s%-15s%s\n", "Skye", "Customer", "skye@gmail.com", "hiimskye","verified");
+		testOutput += String.format("%-10s%-15s%-15s%s\n", "Gerald", "Designer", "gerald@gmail.com", "hiimgerald","new");
 
-    }
+
+
+		assertEquals("Test that able to see the displayed customer details in the desired format",
+				testOutput, allUsers);
+	}
+	@Test
+	public void deleteUserAccountsTest() {
+		// Item list is not null, so that can add a new item
+		assertNotNull("Test if there is valid user account arraylist to add to", userAccList);
+
+		C206_CaseStudy.addUserAccounts(userAccList, ua1);
+		assertEquals("Test that the customer details are in the UserAccount arraylist", 1, userAccList.size());
+		// Check if the size of accountList decrements by 1 after deleting a user
+		C206_CaseStudy.deleteUserAccounts(userAccList,"jack");
+		assertEquals("Check if User has been deleted properly", 0, userAccList.size());
+	}
+	@Test
+	public void updateUserAccountsTest() {
+		// check that accountList is valid, so that can add a new item - boundary
+		assertNotNull("Test if there is valid UserAccount arraylist to retrieve item", userAccList);
+		// Given a valid list, after adding 1 item, the size of the list is 1 - normal
+		// The item just added is as same as the first item of the list
+		C206_CaseStudy.addUserAccounts(userAccList, ua1);
+		// Update user
+		C206_CaseStudy.updateUserAccounts(userAccList);
+		// test if the expected output string same as the list of UserAccounts retrieved
+		String updateOutput = String.format("%-10s%-15s", ua1.getName(), ua1.getPassword());
+		String expectedUpdateOutput = String.format("%-10s%-15s", "Joey", "Joey123");
+
+
+
+		assertEquals("Test that updtOutput has the expectedUpdtOutput", updateOutput, expectedUpdateOutput);
+
+	}
+
+	@Test
+	//addAppointment (Done by Vi Ron)
+	public void addAppointmentTest() {
+		addAppointmentTest();
+		C206_CaseStudy.addAppointment(appointmentList, null);
+		String testOut = String.format("%-10s %-10d %-10s \n", "Bobby", 1, "01/01/20 23:59");
+		assertEquals("Test adding appointment", testOut, appointmentList.get(0));
+	}
 }
