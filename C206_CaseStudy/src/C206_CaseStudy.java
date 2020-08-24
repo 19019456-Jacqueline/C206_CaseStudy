@@ -89,7 +89,9 @@ public class C206_CaseStudy {
 				}
 
 			} else if (option == 4) {
-
+				//request for quotation (Jun Lim)
+				editRequest(quotationList);
+				//deleteRequest == deleteQuotation as when deleting the quotation it removes the entire block so the request ends up removed as well
 			} else if (option == 5) {
 				// MANAGE APPOINTMENT (Done by Vi Ron)
 				public static void appointmentMenu() {

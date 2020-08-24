@@ -111,6 +111,7 @@ public class C206_CaseStudyTest {
 	  }
 
 	@Test
+	//editRequest (Jun Lim)
 	public void editRequestTest() {
 		addQuotationTest();
 		C206_CaseStudy.editRequest(quotationList);
