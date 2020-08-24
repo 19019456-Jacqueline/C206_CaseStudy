@@ -314,18 +314,55 @@ public class C206_CaseStudy {
 		output += retrieveAllUsers(userAccList);
 		System.out.println(output);
 	}
-	//======= Option 3 Delete User Accounts =======
-	public static void deleteUserAccounts(ArrayList<userAccounts> userAccList) {
+	
+	// ======= Option 3 Delete User Accounts =======
+    public static void deleteUserAccounts(ArrayList<userAccounts> userAccList) {
 
-		String delete = Helper.readString("Please enter username to delete> ");
+ 
 
-		for (int i = 0; i < userAccList.size(); i++) {
-			if (userAccList.get(i).getName() == delete) {
-				userAccList.remove(i);
-				System.out.println("User Account deleted");
-			}
-		}
-	}
+        String delete = Helper.readString("Please enter username to delete> ");
+        boolean isDeleted = false;
+
+ 
+
+        for (int i = 0; i < userAccList.size(); i++) {
+            if (isDeleted == false && delete.equalsIgnoreCase(userAccList.get(i).getName())) {
+                userAccList.remove(i);
+                isDeleted = true;
+            }
+        }
+        if (isDeleted == true) {
+            System.out.println("User Account deleted");
+        } else {
+            System.out.println("Username not found");
+        }
+    }
+
+    // ======== Option 4 Update User Accounts ========
+    public static void updateUserAccounts(ArrayList<userAccounts> userAccList) {
+
+ 
+
+        String retrieve = Helper.readString("Please enter username to update> ");
+        String updateUser = Helper.readString("Please enter new username> ");
+        String updatePassword = Helper.readString("Please enter new password> ");
+        boolean isUpdated = false;
+
+ 
+
+        for (int i = 0; i < userAccList.size(); i++) {
+            if (isUpdated == false && retrieve.equalsIgnoreCase(userAccList.get(i).getName())) {
+                userAccList.get(i).setName(updateUser);
+                userAccList.get(i).setPassword(updatePassword);
+                isUpdated = true;
+            }
+        }
+        if (isUpdated == true) {
+            System.out.println("User Account updated");
+        } else {
+            System.out.println("Username not found");
+        }
+    }
 
 	// Manage quotation (Done by Eu Kuang)
 	public static String retrieveAllQuotation(ArrayList<Quotation> quotationList) {
