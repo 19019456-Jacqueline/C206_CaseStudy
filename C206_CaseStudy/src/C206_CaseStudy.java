@@ -1,4 +1,5 @@
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -90,6 +91,14 @@ public class C206_CaseStudy {
 			} else if (option == 4) {
 
 			} else if (option == 5) {
+				// MANAGE APPOINTMENT (Done by Vi Ron)
+				public static void appointmentMenu() {
+					System.out.println();
+					System.out.println("1. View all Appointments");
+					System.out.println("2. Book an appointment");
+					System.out.println("3. Update an appointment");
+					System.out.println("4. Quit");
+				}
 
 			}
 
@@ -365,4 +374,43 @@ public class C206_CaseStudy {
 		}
 
 	}
+	
+	// Manage Appointment (Done by Vi Ron)
+	//================================= Option 1 View =================================
+		public static String retrieveAllAppointments(ArrayList<Appointment> AppointmentList) {
+			String output = "";
+
+			for (int i = 0; i <  AppointmentList.size(); i++) {
+				output += String.format("%-20s\n",  AppointmentList.get(i).toString());
+
+			}
+			return output;
+		}
+		
+		public static void viewAllAppointments(ArrayList<Appointment> AppointmentList) {
+			C206_CaseStudy.setHeader("APPOINTMENT LIST");
+
+			String output = String.format("%-10s %-30s %-10s\n", "CUST_NAME", "CUST_ID", "APPOINTMENT_DATE");
+			output += retrieveAllAppointments(AppointmentList);
+
+			System.out.println(output);
+			
+		}
+		
+		//================================= Option 2 Add =================================
+		public static Appointment inputAppointment() {
+			String custName = Helper.readString("Enter customer name > ");
+			int custID = Helper.readInt("Enter id > ");
+			String input = Helper.readString("Time of meeting (dd/MM/yy hh:mm) > ");
+			DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("dd/MM/yyyy hh:mm");
+			LocalDateTime date_format = LocalDateTime.parse(input, formatter1);
+			Appointment a = new Appointment(custName, custID, date_format);
+			return a;
+			
+		}
+		public static void addAppointment(ArrayList<Appointment> appointmentList, Appointment cc) {
+			
+			appointmentList.add(cc);
+			System.out.println("Appointment added");
+		}
 }
