@@ -24,17 +24,26 @@ public class C206_CaseStudy {
 
 				if (option == 1) {
 
-					// MANAGE PACKAGE MENU (Done by Jacqueline)
-					int packageOption = Helper.readInt("Enter option> ");
-					if (packageOption == 1) {
+					if (option == 1) {
 
-						Package p = inputPackage();
-
-						C206_CaseStudy.addPackage(packageList, p);
-
-					} else if (option == 2) {
-						// C206_CaseStudy.viewAllPackages(packageList);
-					}
+						//MANAGE PACKAGE MENU (Done by Jacqueline)
+		                inputType();
+		                int packageOption = Helper.readInt("Enter option> ");
+		                if (packageOption == 1) {
+		                    Package p = inputPackage();
+		                    addPackage(packageList, p);
+		                    
+		                } else if (packageOption == 2) {
+		                    viewAllPackages(packageList);
+		                } else if (packageOption == 3) {
+		                    deletePackage(packageList);
+		                } else if (packageOption == 4) {
+		                    searchPackage(packageList);
+		                } else if (packageOption == 5) {
+		                    updatePackage(packageList);
+		                } else if (packageOption == 6) {
+		                    deletePackagebyStartDate(packageList);
+		                }
 
 					addPackage(packageList, p);
 
@@ -172,6 +181,76 @@ public class C206_CaseStudy {
 		output += retrieveAllPackages(packageList);
 		System.out.println(output);
 	}
+	
+	//Delete packages - Option 3
+    public static void deletePackage(ArrayList<Package> packageList) {
+        C206_CaseStudy.setHeader("DELETE PACKAGES");
+        String packageCode = Helper.readString("Enter package code> ");
+        for (int i = 0; i < packageList.size(); i++) {
+            if (packageList.get(i).getPackageCode() == packageCode) {
+                packageList.remove(i);
+            }
+            System.out.println("Package deleted!");
+        }
+    }
+   
+    //Search for package - Option 4
+    public static void searchPackage(ArrayList<Package> packageList) {
+        C206_CaseStudy.setHeader("SEARCH FOR PACKAGE BY AMOUNT AND DATE");
+        double amount = Helper.readInt("Enter amount> ");
+        double amount2 = Helper.readInt("Enter 2nd amount> ");
+        Date date = Helper.readDate("Enter date> ");
+       
+        for (int i = 0; i < packageList.size(); i++) {
+            boolean amt = amount < packageList.get(i).getPackageAmount()
+                    && packageList.get(i).getPackageAmount()  < amount2;
+           
+            if (date.compareTo(packageList.get(i).getStartDate()) < 0 && (amt == true)) {
+                    packageList.get(i);
+                    Package.display();
+                    System.out.println("Package found!");
+            }
+        }
+       
+    }
+   
+    //Update package - Option 5
+    public static void updatePackage(ArrayList<Package> packageList) {
+        C206_CaseStudy.setHeader("UPDATE PACKAGE");
+        Date startDate = Helper.readDate("Enter start date> ");
+        Date endDate = Helper.readDate("Enter end date> ");
+        String code = Helper.readString("Enter package code> ");
+        double amt = Helper.readDouble("Enter amount > ");
+        String description = Helper.readString("Enter description> ");
+        boolean available = Helper.readBoolean("Enter if package is available or not? ");
+        String output = String.format("%-10s %-10s %-10s %-10s %-10s %-10s", "PACKAGE CODE", "DESCRIPTION", "PACKAGE AMOUNT"
+                , "START DATE", "END DATE", "AVAILABILITY");
+        /*
+        for (int i = 0; i < packageList.size(); i++) {
+            boolean date = startDate.compareTo(packageList.get(i).getStartDate()) == 0
+                    && endDate.compareTo(packageList.get(i).getEndDate()) == 0;
+            if (date == true) {
+                output += String.format("%-10s %-10s %-10.2f %-10s %-10s %-10s"
+                        ,packageList.get(i).setPackageCode(code), packageList.get(i).setDescription(description)
+                        ,packageList.get(i).setPackageAmount(amt), packageList.get(i).setStartDate(startDate)
+                        ,packageList.get(i).setEndDate(endDate), packageList.get(i).setAvailable(available));
+            }
+        }
+        */
+    }
+   
+    //Delete package by start date - Option 6
+    public static void deletePackagebyStartDate(ArrayList<Package> packageList) {
+        C206_CaseStudy.setHeader("DELETE PACKAGES BY START DATE");
+        Date startDate = Helper.readDate("Enter start date> ");
+       
+        for (int i = 0; i < packageList.size(); i++) {
+            if (startDate.compareTo(packageList.get(i).getStartDate()) > 0) {
+                packageList.remove(i);
+            }
+            System.out.println("Package deleted!");
+        }
+    }
 
 	// View packages
 	/*
