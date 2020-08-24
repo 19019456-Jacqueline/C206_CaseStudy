@@ -296,7 +296,7 @@ public class C206_CaseStudy {
 	}
 
 	// Done by Jun Lim
-	public void editRequest(ArrayList<Quotation> quotationList) {
+	public static void editRequest(ArrayList<Quotation> quotationList) {
 		C206_CaseStudy.viewAllQuotation(quotationList);
 		int index = Helper.readInt("Which request index do you wish to edit? > ");
 		int editElement = Helper.readInt("Which element do you wish to edit? > ");

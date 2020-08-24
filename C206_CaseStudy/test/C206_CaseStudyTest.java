@@ -90,4 +90,10 @@ public class C206_CaseStudyTest {
 		assertEquals("Checks if quotation is deleted properly,", 0, quotationList.size());
 	}
 
+	@Test
+	public void editRequestTest() {
+		addQuotationTest();
+		C206_CaseStudy.editRequest(quotationList);
+		
+	}
 }
