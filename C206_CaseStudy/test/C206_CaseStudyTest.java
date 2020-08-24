@@ -9,13 +9,15 @@ import org.junit.Test;
 public class C206_CaseStudyTest {
 	private Package p1;
 	private Package p2;
+	private Quotation q1;
 
 	private ArrayList<Package> packageList;
+	private ArrayList<Quotation> quotationList;
 
 
 	@Before
 	public void setUp() throws Exception {
-		//Prepare some test data
+		//Prepare some test data for manage package (Done by Jacqueline)
 
 		p1 = new Package("This house has 4 bedrooms", "P00001",
 				10000, "20/8/2020", "20/4/2021", false);
@@ -24,6 +26,10 @@ public class C206_CaseStudyTest {
 
 
 		packageList=new ArrayList<Package>();
+		
+		//Prepare some test data for manage quotation (Done by Eu Kuang)
+		q1 = new Quotation(1, 1, "Kitchen", "Doors", "Elkie Chong", "01-09-2020", 500.00);
+		quotationList = new ArrayList<Quotation>();
 
 
 	}
@@ -62,33 +68,47 @@ public class C206_CaseStudyTest {
 	}
 
 	//Manage quotation (Done by Eu Kuang)
-	ArrayList<Quotation> quotationList = new ArrayList<Quotation>();
-
+	@Test
+	//Add quotation (Done by Eu Kuang)
 	public void addQuotationTest() {
 		assertNotNull("Check for valid arraylist", quotationList);
-		C206_CaseStudy.addQuotation(quotationList, quote);
+		C206_CaseStudy.addQuotation(quotationList, q1);
 		assertEquals("Check if arraylist size is 1" , 1, quotationList.size());
 	}
 
+	@Test
+	//View quotation (Done by Eu Kuang)
 	public void retrieveQuotationTest() {
-		String output = String.format("%-10d %-10d %-10s %-10s %-10s %-10s %-10.2f \n", 1, 1, "test", "test", "test", "test", 5.00);
+		String output = String.format("%-10d %-10d %-10s %-10s %-10s %-10s %-10.2f \n", 1, 1, "Kitchen", "Doors", "Elkie Chong", "01-09-2020", 500.00);
 		addQuotationTest();
-		assertEquals("Checks if the quotation retrieved properly", output, C206_CaseStudy.retreiveAllQuotation(quotationList));
+		assertEquals("Checks if the quotation retrieved properly", output, C206_CaseStudy.retrieveAllQuotation(quotationList));
 	}
 
 	@Test
 	public void viewQuotationTest() {
 		addQuotationTest();
-		String output = C206_CaseStudy.retreiveAllQuotation(quotationList);
-		assertEquals("Checks if view all is working properly", output, C206_CaseStudy.retreiveAllQuotation(quotationList));
+		String output = C206_CaseStudy.retrieveAllQuotation(quotationList);
+		assertEquals("Checks if view all is working properly", output, C206_CaseStudy.retrieveAllQuotation(quotationList));
 	}
 
 	@Test
+	//Delete quotation (Done by Eu Kuang)
 	public void deleteQuotationTest() {
 		addQuotationTest();
-		C206_CaseStudy.deleteQuotation(quotationList, 1);
+		C206_CaseStudy.deleteQuotation(quotationList);
 		assertEquals("Checks if quotation is deleted properly,", 0, quotationList.size());
 	}
+	
+	//Update quotation (Done by Eu Kuang)	
+	public void updateQuotationTest() {
+	    assertNotNull("Test if there is valid Quotation arraylist to retrieve item", quotationList);
+	    C206_CaseStudy.addQuotation(quotationList, q1);
+	    quotationList.get(0).setCategory("Tiles");
+	    quotationList.get(0).setDate("02-09-2020");
+	    String allQuotation= C206_CaseStudy.retrieveAllQuotation(quotationList);
+	    String testOutput = String.format("%-10d %-10d %-10s %-10s %-10s %-10s %-10.2f \n", 1, 1, "Kitchen", "Tiles", "Elkie Chong", "02-09-2020", 500.00);
+	    assertEquals("Test that updateQuotation", testOutput, allQuotation);
+	  }
 
 	@Test
 	public void editRequestTest() {
