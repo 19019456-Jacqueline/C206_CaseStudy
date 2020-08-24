@@ -28,4 +28,10 @@ public class userAccounts {
 	public String getStatus() {
 		return status;
 	}
+    public void setName(String name) {
+        this.name = name;
+    }
+    public void setPassword(String password) {
+        this.password = password;
+    }
 }
