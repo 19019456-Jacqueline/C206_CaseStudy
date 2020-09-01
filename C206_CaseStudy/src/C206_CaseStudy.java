@@ -438,7 +438,7 @@ public class C206_CaseStudy {
 				if (quotationList.get(i).getQuotationID() == search) {
 					System.out.println("Designer name: " + quotationList.get(i).getName());
 					System.out.println("Total cost range: " + quotationList.get(i).getAmount());
-					System.out.println("Start renovation date (MM-dd-yyy): " + quotationList.get(i).getDate());
+					System.out.println("Start renovation date (dd-mm-yyy): " + quotationList.get(i).getDate());
 					System.out.println("Renovation type: " + quotationList.get(i).getCategory());
 				} else {
 					System.out.println("Invalid Quotation ID!");
